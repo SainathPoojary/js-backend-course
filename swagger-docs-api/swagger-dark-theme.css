@@ -1,0 +1,25 @@
+/* Set a dark background color for the entire Swagger UI */
+.swagger-ui-wrap {
+  background-color: #222;
+}
+
+/* Customize text and link colors for better visibility */
+.swagger-ui .topbar .download-url-wrapper .download-url-button {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Customize the header background and text colors */
+.swagger-ui .topbar {
+  background-color: #333;
+}
+
+/* Define dark text color for the Swagger UI sections */
+.swagger-ui h1, .swagger-ui h2, .swagger-ui h3, .swagger-ui h4, .swagger-ui h5, .swagger-ui h6,
+.swagger-ui .opblock-summary-description {
+  color: #fff;
+}
+
+/* Customize other elements as needed */
+
+/* Save your changes */

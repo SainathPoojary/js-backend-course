@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: Social App
+  description: Social app - Sainath
+  version: 1.0.1
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local server for testing
+  
+components:
+  securitySchemes:
+
+    BasicAuth:
+      type: http
+      scheme: basic
+
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /instagram:
+    get:
+      summary: returns username, followers and follows
+      responses:
+        '200': # Status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                # type: object
+                # properties: 
+                #   username:
+                #     type: string
+                #   followers:
+                #     type: string
+                #   following:
+                #     type: string
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    username:
+                      type: string
+                    followers:
+                      type: string
+                    following:
+                      type: string
+
+  /{token}:
+    get:
+      summary: returns token
+      parameters:
+        - in: path
+          name: token   # Note the name is the same as in the path
+          default: token
+          required: true
+          schema:
+            type: string
+          description: Token for API testing
+      responses:
+        '200': # Status code
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  params:
+                    type: string

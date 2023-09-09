@@ -1,0 +1,245 @@
+openapi: "3.0.0"
+info:  
+  title: learn express and swagger
+  description: New Documentation centric node app
+  version: 1.1.0
+  contact:
+    email: sainathrpoojary@gmail.com
+    url: "https://sainathpoojary.tech"
+
+servers:
+  - url: "{test}://localhost:3000/api/v1"
+    description: for localhost - secure
+    variables:
+      version:
+        default: v1
+        enum:
+          - v1
+          - v2
+      test:
+        default: http
+        enum:
+          - http
+          - https
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /string:
+    get:
+      tags:
+        - "string"
+      summary: "string response"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "hello world"
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /object:
+    get:
+      summary: "object response"
+      tags:
+        - "object"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: hello world
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+
+    post:
+      summary: "post object"
+      tags:
+        - object
+      requestBody:
+        description: object to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "11"
+                name:
+                  type: string
+                  example: "Node.js"
+                price:
+                  type: number
+                  example: 999
+                
+      responses:
+        200:
+          description: "success"
+          content:
+            application/json:
+              schema:
+                type: number
+                example: 5
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /array:
+    get:
+      summary: "array response"
+      tags:
+        - "array"
+      responses:
+        200:
+          description: "success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: "11"
+                    name:
+                      type: string
+                      example: "Node.js"
+                    price:
+                      type: number
+                      example: 999
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error            
+  /object/{id}:
+    get:
+      summary: "URL params"
+      tags:
+        - "object"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: 22
+      responses:
+        200:
+          description: "success"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    id:
+                      type: string
+                      example: "11"
+                    name:
+                      type: string
+                      example: "Node.js"
+                    price:
+                      type: number
+                      example: 999
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /urlquery:
+    get:
+      summary: "Takes URL parameters and returns object"
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "11"
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "nuxt.js"
+        - name: price
+          in: query
+          required: true
+          schema:
+            type: number
+            example: 200
+      responses:
+        200:
+          description: "success"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    id:
+                      type: string
+                      example: "11"
+                    name:
+                      type: string
+                      example: "Node.js"
+                    price:
+                      type: number
+                      example: 999
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /fileupload:
+    post:
+      summary: Upload file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      parameters:
+        - in: header
+          name: auth
+          schema:
+            type: string
+          
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: string
+                example: File uploaded!
+        400:
+          description: Not Found
+        500:
+          description: Internal Server Error
+
+
+            
+  
+      

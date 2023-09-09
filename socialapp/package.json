@@ -1,0 +1,21 @@
+{
+  "name": "socialapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Sainath Poojary",
+  "license": "ISC",
+  "dependencies": {
+    "date-format": "^4.0.14",
+    "express": "^4.18.2",
+    "swagger-ui-express": "^4.6.3",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
